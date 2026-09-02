@@ -1,1 +1,306 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คณะกรรมการบริหาร | วิทยาลัยเทคโนโลยีโปลิเทคนิคลานนา เชียงใหม่</title>
+<!-- นำเข้า Font Awesome สำหรับไอคอนคน -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap');
 
+  /* --- Reset & Base Styles --- */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Sarabun', sans-serif;
+    line-height: 1.6;
+    color: #334155;
+    background-color: #e5e7eb; /* สีพื้นหลังสีเทาอ่อนตามภาพ */
+  }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  
+  /* --- Header & Navigation --- */
+  .site-header {
+    background: #ffffff; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    position: sticky; top: 0; z-index: 1000; padding: 15px 0;
+  }
+  .site-header .wrap { display: flex; justify-content: space-between; align-items: center; }
+  .brand { display: flex; align-items: center; gap: 15px; }
+  .brand-mark { background: #b91c1c; color: #ffffff; padding: 10px 15px; border-radius: 8px; font-weight: 700; font-size: 1.5rem; }
+  .brand-text strong { display: block; font-size: 1.2rem; color: #0f172a; line-height: 1.2; }
+  .brand-text span { font-size: 0.85rem; color: #64748b; }
+  .nav-toggle { display: none; background: #b91c1c; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
+  .main-nav ul { display: flex; gap: 20px; }
+  .main-nav a { font-weight: 500; color: #475569; transition: color 0.3s ease; font-size: 1rem; }
+  .main-nav a:hover, .main-nav a[aria-current="page"] { color: #b91c1c; }
+
+  /* --- Breadcrumb --- */
+  .breadcrumb {
+    padding: 20px 0;
+    font-size: 0.9rem;
+    color: #64748b;
+  }
+  .breadcrumb a { color: #0ea5e9; font-weight: 500; }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  /* --- Admin Layout --- */
+  .admin-section { padding: 40px 0 60px; }
+  .admin-heading {
+    text-align: center;
+    color: #0ea5e9; /* สีฟ้าอมฟ้าตามภาพ */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  .admin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+  .admin-grid.center-single {
+    grid-template-columns: minmax(300px, 380px);
+    justify-content: center;
+  }
+
+  /* --- Admin Card Design --- */
+  .admin-card {
+    background: #f1f5f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d1d5db;
+  }
+  
+  .admin-banner {
+    height: 140px;
+    /* แนะนำให้ใส่รูปรั้ว/อาคารวิทยาลัยตรงนี้ */
+    background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .admin-content {
+    position: relative;
+    padding: 20px;
+    min-height: 120px;
+    background: #eaeaea; /* สีเทาอ่อนๆ ด้านล่างภาพ */
+  }
+
+  .admin-info {
+    width: 60%; /* เหลือพื้นที่ให้รูป */
+  }
+
+  .admin-info h3 {
+    font-size: 1.1rem;
+    color: #334155;
+    margin-bottom: 5px;
+  }
+
+  .admin-info p {
+    font-size: 0.85rem;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .admin-photo {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 100px;
+    height: 125px;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.5); /* ขอบขาวจางๆ */
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: #cbd5e1;
+  }
+
+  /* --- Footer --- */
+  .site-footer { background: #0f172a; color: #94a3b8; padding: 70px 0 30px; }
+  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; }
+  .footer-grid h4 { color: #ffffff; margin-bottom: 25px; font-size: 1.2rem; }
+  .footer-grid a { color: #94a3b8; transition: color 0.3s ease; line-height: 2; }
+  .footer-grid a:hover { color: #ffffff; }
+  .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid #1e293b; font-size: 0.9rem; }
+
+  /* --- Responsive --- */
+  @media (max-width: 992px) {
+    .admin-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .admin-grid { grid-template-columns: 1fr; }
+    .nav-toggle { display: block; }
+    .main-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #ffffff; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 20px; }
+    .main-nav ul { flex-direction: column; gap: 15px; }
+  }
+  @media (max-width: 480px) {
+    .brand-text { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">LPC</span>
+      <span class="brand-text"><strong>วิทยาลัยเทคโนโลยีโปลิเทคนิคลานนา</strong><span>เชียงใหม่</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle">☰ เมนู</button>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="index.html">หน้าหลัก</a></li>
+        <li><a href="administrators.html" aria-current="page">ข้อมูลผู้บริหาร</a></li>
+        <li><a href="staff.html">ข้อมูลบุคลากร</a></li>
+        <li><a href="students.html">ข้อมูลนักเรียน นักศึกษา</a></li>
+        <li><a href="programs.html">ข้อมูลสาขาวิชาที่เปิดสอน</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="breadcrumb">
+    <a href="index.html">หน้าหลัก</a> &gt; คณะกรรมการบริหาร
+  </div>
+</div>
+
+<section class="admin-section">
+  <div class="wrap">
+    
+    <!-- หมวดที่ 1 -->
+    <h2 class="admin-heading">ผู้ทรงคุณวุฒิ</h2>
+    <div class="admin-grid">
+      <!-- Card 1 -->
+      <div class="admin-card">
+        <div class="admin-banner"></div>
+        <div class="admin-content">
+          <div class="admin-info">
+            <h3>นายจีระพันธ์ กิติบุตร</h3>
+            <p><i class="fa-solid fa-user-tie"></i> ผู้ทรงคุณวุฒิ</p>
+          </div>
+          <!-- ใส่ลิงก์รูปอาจารย์ที่ src="" -->
+          <img src="https://via.placeholder.com/100x125?text=Photo" alt="รูป" class="admin-photo">
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="admin-card">
+        <div class="admin-banner"></div>
+        <div class="admin-content">
+          <div class="admin-info">
+            <h3>นายวิทยา ใจวิถี</h3>
+            <p><i class="fa-solid fa-user-tie"></i> ผู้ทรงคุณวุฒิ</p>
+          </div>
+          <img src="https://via.placeholder.com/100x125?text=Photo" alt="รูป" class="admin-photo">
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="admin-card">
+        <div class="admin-banner"></div>
+        <div class="admin-content">
+          <div class="admin-info">
+            <h3>รศ.ดร.จารุณี ทิพยมณฑล</h3>
+            <p><i class="fa-solid fa-user-tie"></i> ผู้ทรงคุณวุฒิ</p>
+          </div>
+          <img src="https://via.placeholder.com/100x125?text=Photo" alt="รูป" class="admin-photo">
+        </div>
+      </div>
+    </div>
+
+    <!-- หมวดที่ 2 (ตรงกลาง 1 ใบ) -->
+    <h2 class="admin-heading">ผู้รับใบอนุญาต / ผู้จัดการ</h2>
+    <div class="admin-grid center-single">
+      <!-- Card 4 -->
+      <div class="admin-card">
+        <div class="admin-banner"></div>
+        <div class="admin-content">
+          <div class="admin-info">
+            <h3>นายสมสิทธิ์ ทิพยมณฑล</h3>
+            <p><i class="fa-solid fa-user-tie"></i> ผู้รับใบอนุญาต / ผู้จัดการ</p>
+          </div>
+          <img src="https://via.placeholder.com/100x125?text=Photo" alt="รูป" class="admin-photo">
+        </div>
+      </div>
+    </div>
+
+    <!-- หมวดที่ 3 -->
+    <h2 class="admin-heading">ผู้อำนวยการ / ผู้แทนครู</h2>
+    <div class="admin-grid">
+      <!-- Card 5 -->
+      <div class="admin-card">
+        <div class="admin-banner"></div>
+        <div class="admin-content">
+          <div class="admin-info">
+            <h3>นายฉลวย พันธ์ทอง</h3>
+            <p><i class="fa-solid fa-user-tie"></i> ผู้อำนวยการ</p>
+          </div>
+          <img src="https://via.placeholder.com/100x125?text=Photo" alt="รูป" class="admin-photo">
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="admin-card">
+        <div class="admin-banner"></div>
+        <div class="admin-content">
+          <div class="admin-info">
+            <h3>นายศิรภพ เจริญกุศล</h3>
+            <p><i class="fa-solid fa-user-tie"></i> ผู้แทนครู</p>
+          </div>
+          <img src="https://via.placeholder.com/100x125?text=Photo" alt="รูป" class="admin-photo">
+        </div>
+      </div>
+      <!-- Card 7 -->
+      <div class="admin-card">
+        <div class="admin-banner"></div>
+        <div class="admin-content">
+          <div class="admin-info">
+            <h3>นางพิมพ์ภาทุล เตรียมสันติภาพ</h3>
+            <p><i class="fa-solid fa-user-tie"></i> ผู้แทนครู</p>
+          </div>
+          <img src="https://via.placeholder.com/100x125?text=Photo" alt="รูป" class="admin-photo">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>วิทยาลัยเทคโนโลยีโปลิเทคนิคลานนา เชียงใหม่</h4>
+        <p>2 ซอยสุขเกษม ถ.ซุปเปอร์ไฮเวย์ เชียงใหม่-ลำปาง ต.ป่าตัน อ.เมือง จ.เชียงใหม่ 50300</p>
+      </div>
+      <div>
+        <h4>ติดต่อเรา</h4>
+        <p>โทรศัพท์: 053-213061<br>อีเมล: lannapoly@lannapoly.ac.th</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 วิทยาลัยเทคโนโลยีโปลิเทคนิคลานนา เชียงใหม่. สงวนลิขสิทธิ์.</div>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+
+  navToggle.addEventListener('click', () => {
+    if (mainNav.style.display === 'block') {
+      mainNav.style.display = 'none';
+    } else {
+      mainNav.style.display = 'block';
+    }
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) mainNav.style.display = 'block';
+    else mainNav.style.display = 'none';
+  });
+</script>
+</body>
+</html>
