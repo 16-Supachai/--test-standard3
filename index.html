@@ -1,128 +1,325 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>หน้าหลัก | วิทยาลัยเทคโนโลยีตัวอย่าง</title>
-<link rel="stylesheet" href="assets/styles.css">
-</head>
-<body>
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap');
 
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">วท</span>
-      <span class="brand-text"><strong>วิทยาลัยเทคโนโลยีตัวอย่าง</strong><span>สาขางานเทคโนโลยีสารสนเทศ</span></span>
-    </a>
-    <button class="nav-toggle" aria-label="เปิดเมนู" aria-expanded="false">เมนู</button>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="index.html" aria-current="page">หน้าหลัก</a></li>
-        <li><a href="administrators.html">ข้อมูลผู้บริหาร</a></li>
-        <li><a href="staff.html">ข้อมูลบุคลากร</a></li>
-        <li><a href="students.html">ข้อมูลนักเรียน นักศึกษา</a></li>
-        <li><a href="programs.html">สาขาวิชาที่เปิดสอน</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+/* --- Reset & Base Styles --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-<section class="hero">
-  <div class="wrap">
-    <p class="eyebrow">ยินดีต้อนรับ</p>
-    <h1>สร้างอนาคตด้านเทคโนโลยี เริ่มต้นที่นี่</h1>
-    <p>วิทยาลัยเทคโนโลยีตัวอย่าง มุ่งผลิตนักเรียน นักศึกษาที่มีความรู้ ความสามารถ และทักษะวิชาชีพ พร้อมก้าวสู่ตลาดแรงงานและการศกษาต่อในระดับที่สูงขึ้น</p>
-    <div class="hero-stats">
-      <div><strong>5</strong><span>สาขาวิชาที่เปิดสอน</span></div>
-      <div><strong>48</strong><span>บุคลากรและครูผู้สอน</span></div>
-      <div><strong>1,200+</strong><span>นักเรียน นักศึกษา</span></div>
-      <div><strong>30</strong><span>ปีแห่งการก่อตั้ง</span></div>
-    </div>
-  </div>
-</section>
+body {
+  font-family: 'Sarabun', sans-serif;
+  line-height: 1.6;
+  color: #334155;
+  background-color: #f8fafc;
+}
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <h2>เกี่ยวกับสถานศึกษา</h2>
-      <p>สถานที่สำหรับเรียนรู้ ฝึกฝน และเติบโตในสายอาชีพเทคโนโลยีสารสนเทศและการสื่อสาร ด้วยหลักสูตรที่ทันสมัยและครูผู้สอนที่มีประสบการณ์ตรง</p>
-    </div>
-    <div class="card-grid">
-      <div class="card">
-        <h3>หลักสูตรทันสมัย</h3>
-        <p>ปรับปรุงเนื้อหาการเรียนการสอนให้สอดคล้องกับเทคโนโลยีและความต้องการของสถานประกอบการอยู่เสมอ</p>
-      </div>
-      <div class="card">
-        <h3>ครูผู้สอนมืออาชีพ</h3>
-        <p>ทีมบุคลากรที่มีความเชี่ยวชาญเฉพาะทาง พร้อมให้คำปรึกษาทั้งด้านวิชาการและการฝึกปฏิบัติจริง</p>
-      </div>
-      <div class="card">
-        <h3>เครือข่ายสถานประกอบการ</h3>
-        <p>ความร่วมมือกับสถานประกอบการชั้นนำ เปิดโอกาสฝึกงานและเข้าทำงานหลังสำเร็จการศึกษา</p>
-      </div>
-    </div>
-  </div>
-</section>
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-<section class="alt">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>ข่าวสารและกิจกรรม</h2>
-      <p>ความเคลื่อนไหวล่าสุดของวิทยาลัย</p>
-    </div>
-    <div class="card-grid">
-      <div class="card">
-        <span class="role">รับสมัครนักศึกษา</span>
-        <h3>เปิดรับสมัครนักศึกษาใหม่ ปีการศึกษา 2569</h3>
-        <p>รับสมัครทุกสาขาวิชา ตั้งแต่วันนี้เป็นต้นไป สอบถามรายละเอียดที่ฝ่ายทะเบียน</p>
-      </div>
-      <div class="card">
-        <span class="role">กิจกรรม</span>
-        <h3>โครงการอบรมเชิงปฏิบัติการพัฒนาเว็บไซต์</h3>
-        <p>จัดขึ้นสำหรับนักเรียน นักศึกษาสาขางานเทคโนโลยีสารสนเทศ เพื่อเสริมทักษะการสร้างเว็บไซต์</p>
-      </div>
-      <div class="card">
-        <span class="role">ประกาศ</span>
-        <h3>กำหนดการสอบวัดผลปลายภาคเรียน</h3>
-        <p>นักเรียน นักศึกษาสามารถตรวจสอบตารางสอบได้ที่ฝ่ายวิชาการ</p>
-      </div>
-    </div>
-  </div>
-</section>
+ul {
+  list-style: none;
+}
 
-<section class="cta-band">
-  <div class="wrap">
-    <h2>สนใจศึกษาต่อกับเรา?</h2>
-    <p>ดูสาขาวิชาที่เปิดสอนทั้งหมด และเลือกเส้นทางที่ใช่สำหรับคุณ</p>
-    <a class="btn" href="programs.html">ดูสาขาวิชาที่เปิดสอน</a>
-  </div>
-</section>
+/* --- Layout --- */
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h4>วิทยาลัยเทคโนโลยีตัวอย่าง</h4>
-        <p>123 ถนนตัวอย่าง ตำบลตัวอย่าง อำเภอเมือง จังหวัดตัวอย่าง 10000</p>
-      </div>
-      <div>
-        <h4>ติดต่อเรา</h4>
-        <p>โทร. 0-0000-0000<br>อีเมล info@example-college.ac.th</p>
-      </div>
-      <div>
-        <h4>เมนู</h4>
-        <p>
-          <a href="administrators.html">ข้อมูลผู้บริหาร</a><br>
-          <a href="staff.html">ข้อมูลบุคลากร</a><br>
-          <a href="students.html">ข้อมูลนักเรียน นักศึกษา</a><br>
-          <a href="programs.html">สาขาวิชาที่เปิดสอน</a>
-        </p>
-      </div>
-    </div>
-    <div class="footer-bottom">© 2569 วิทยาลัยเทคโนโลยีตัวอย่าง สงวนลิขสิทธิ์</div>
-  </div>
-</footer>
+section {
+  padding: 80px 0;
+}
 
-<script src="assets/script.js"></script>
-</body>
-</html>
+.section-head {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-head h2 {
+  font-size: 2.2rem;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.section-head p {
+  font-size: 1.1rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.alt {
+  background-color: #ffffff;
+}
+
+/* --- Header & Navigation --- */
+.site-header {
+  background: #ffffff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 0;
+}
+
+.site-header .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.brand-mark {
+  background: #1e40af;
+  color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.brand-text strong {
+  display: block;
+  font-size: 1.2rem;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.brand-text span {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.nav-toggle {
+  display: none;
+  background: #1e40af;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 25px;
+}
+
+.main-nav a {
+  font-weight: 500;
+  color: #475569;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover, 
+.main-nav a[aria-current="page"] {
+  color: #1e40af;
+}
+
+/* --- Hero Section --- */
+.hero {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  color: #ffffff;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.hero .eyebrow {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  color: #bfdbfe;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #eff6ff;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-stats div strong {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.hero-stats div span {
+  font-size: 0.95rem;
+  color: #dbeafe;
+}
+
+/* --- Cards --- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f1f5f9;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+  color: #0f172a;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.card .role {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* --- CTA Band --- */
+.cta-band {
+  background: #f59e0b;
+  color: #ffffff;
+  text-align: center;
+  padding: 70px 0;
+}
+
+.cta-band h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.cta-band p {
+  font-size: 1.2rem;
+  margin-bottom: 35px;
+}
+
+.btn {
+  display: inline-block;
+  background: #ffffff;
+  color: #d97706;
+  padding: 15px 35px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Footer --- */
+.site-footer {
+  background: #0f172a;
+  color: #94a3b8;
+  padding: 70px 0 30px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.footer-grid h4 {
+  color: #ffffff;
+  margin-bottom: 25px;
+  font-size: 1.2rem;
+}
+
+.footer-grid p {
+  line-height: 1.8;
+}
+
+.footer-grid a {
+  color: #94a3b8;
+  transition: color 0.3s ease;
+  line-height: 2;
+}
+
+.footer-grid a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid #1e293b;
+  font-size: 0.9rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .hero h1 { font-size: 2.8rem; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  
+  /* ซ่อนเมนูในมือถือ (รอการใช้ JS เปิด/ปิด) */
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+  }
+  
+  .main-nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hero { padding: 60px 0; }
+  .hero h1 { font-size: 2.2rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-stats { grid-template-columns: 1fr; }
+  .brand-text { display: none; } /* ซ่อนชื่อเต็มในมือถือเล็กๆ ให้เหลือแต่โลโก้ */
+}
