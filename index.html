@@ -1,154 +1,474 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>หน้าเว็บไซต์ตัวอย่าง</title>
-    <!-- หากโค้ด CSS ของคุณอยู่ในไฟล์ style.css ให้ใช้บรรทัดด้านล่างนี้ -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>หน้าหลัก | วิทยาลัยเทคโนโลยีโปลิเทคนิคลานนา เชียงใหม่</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap');
+
+  /* --- Reset & Base Styles --- */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Sarabun', sans-serif;
+    line-height: 1.6;
+    color: #334155;
+    background-color: #f8fafc;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  /* --- Layout --- */
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  section {
+    padding: 80px 0;
+  }
+
+  .section-head {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .section-head h2 {
+    font-size: 2.2rem;
+    color: #0f172a;
+    margin-bottom: 10px;
+  }
+
+  .section-head p {
+    font-size: 1.1rem;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .alt {
+    background-color: #ffffff;
+  }
+
+  /* --- Header & Navigation --- */
+  .site-header {
+    background: #ffffff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+  }
+
+  .site-header .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .brand-mark {
+    background: #b91c1c; /* สีแดงโปลิฯ */
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  .brand-text strong {
+    display: block;
+    font-size: 1.2rem;
+    color: #0f172a;
+    line-height: 1.2;
+  }
+
+  .brand-text span {
+    font-size: 0.85rem;
+    color: #64748b;
+  }
+
+  .nav-toggle {
+    display: none;
+    background: #b91c1c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .main-nav ul {
+    display: flex;
+    gap: 20px;
+  }
+
+  .main-nav a {
+    font-weight: 500;
+    color: #475569;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+  }
+
+  .main-nav a:hover, 
+  .main-nav a[aria-current="page"] {
+    color: #b91c1c;
+  }
+
+  /* --- Hero Section --- */
+  .hero {
+    background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 100px 0;
+  }
+
+  .hero .eyebrow {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: #fca5a5;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: #fee2e2;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .hero-stats div strong {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+  }
+
+  .hero-stats div span {
+    font-size: 0.95rem;
+    color: #fecaca;
+  }
+
+  /* --- Cards --- */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f1f5f9;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .card h3 {
+    color: #0f172a;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+
+  .card .role {
+    display: inline-block;
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  /* --- CTA Band --- */
+  .cta-band {
+    background: #f59e0b;
+    color: #ffffff;
+    text-align: center;
+    padding: 70px 0;
+  }
+
+  .cta-band h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .cta-band p {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: #ffffff;
+    color: #d97706;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  /* --- Footer --- */
+  .site-footer {
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 70px 0 30px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+  }
+
+  .footer-grid h4 {
+    color: #ffffff;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+  }
+
+  .footer-grid p {
+    line-height: 1.8;
+  }
+
+  .footer-grid a {
+    color: #94a3b8;
+    transition: color 0.3s ease;
+    line-height: 2;
+  }
+
+  .footer-grid a:hover {
+    color: #ffffff;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #1e293b;
+    font-size: 0.9rem;
+  }
+
+  /* --- Responsive Design --- */
+  @media (max-width: 992px) {
+    .hero h1 { font-size: 2.5rem; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .nav-toggle { display: block; }
+    
+    .main-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    
+    .main-nav ul {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .hero { padding: 60px 0; }
+    .hero h1 { font-size: 2rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-stats { grid-template-columns: 1fr; }
+    .brand-text { display: none; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- Header & Navigation -->
-    <header class="site-header">
-        <div class="wrap">
-            <div class="brand">
-                <div class="brand-mark">NX</div>
-                <div class="brand-text">
-                    <strong>NextGen Tech</strong>
-                    <span>Innovate Your Future</span>
-                </div>
-            </div>
-            
-            <button class="nav-toggle" id="navToggle">☰ เมนู</button>
-            
-            <nav class="main-nav" id="mainNav">
-                <ul>
-                    <li><a href="#" aria-current="page">หน้าแรก</a></li>
-                    <li><a href="#">บริการของเรา</a></li>
-                    <li><a href="#">ทีมงาน</a></li>
-                    <li><a href="#">ติดต่อเรา</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">LPC</span>
+      <span class="brand-text"><strong>วิทยาลัยเทคโนโลยีโปลิเทคนิคลานนา</strong><span>เชียงใหม่</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle">☰ เมนู</button>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="index.html" aria-current="page">หน้าหลัก</a></li>
+        <li><a href="administrators.html">ข้อมูลผู้บริหาร</a></li>
+        <li><a href="staff.html">ข้อมูลบุคลากร</a></li>
+        <li><a href="students.html">ข้อมูลนักเรียน นักศึกษา</a></li>
+        <li><a href="programs.html">ข้อมูลสาขาวิชาที่เปิดสอน</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="wrap">
-            <div class="eyebrow">ก้าวสู่อนาคตที่เหนือกว่า</div>
-            <h1>ขับเคลื่อนธุรกิจของคุณ<br>ด้วยเทคโนโลยีอัจฉริยะ</h1>
-            <p>เรามอบโซลูชันที่ทันสมัยและตอบโจทย์ทุกความต้องการของธุรกิจคุณ เพื่อยกระดับประสิทธิภาพและสร้างการเติบโตอย่างยั่งยืน</p>
-            
-            <div class="hero-stats">
-                <div>
-                    <strong>10K+</strong>
-                    <span>ผู้ใช้งานระบบ</span>
-                </div>
-                <div>
-                    <strong>99.9%</strong>
-                    <span>Uptime รับประกัน</span>
-                </div>
-                <div>
-                    <strong>50+</strong>
-                    <span>พาร์ทเนอร์ธุรกิจ</span>
-                </div>
-                <div>
-                    <strong>24/7</strong>
-                    <span>ทีมซัพพอร์ตดูแลคุณ</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">ยินดีต้อนรับสู่ Lanna Poly</p>
+    <h1>สร้างคนดี มีความรู้<br>คู่คุณธรรม สู่สังคม</h1>
+    <p>สถาบันอาชีวศึกษาชั้นนำของภาคเหนือ มุ่งเน้นผลิตนักศึกษาที่มีทักษะวิชาชีพตรงตามความต้องการของสถานประกอบการ พร้อมก้าวสู่อนาคต</p>
+    <div class="hero-stats">
+      <div><strong>45+</strong><span>ปีแห่งการก่อตั้ง</span></div>
+      <div><strong>10+</strong><span>สาขาวิชาที่เปิดสอน</span></div>
+      <div><strong>4,000+</strong><span>นักเรียน นักศึกษา</span></div>
+      <div><strong>100%</strong><span>โอกาสมีงานทำ</span></div>
+    </div>
+  </div>
+</section>
 
-    <!-- Cards Section (Team / Services) -->
-    <section class="alt">
-        <div class="wrap">
-            <div class="section-head">
-                <h2>ทีมงานผู้เชี่ยวชาญของเรา</h2>
-                <p>ทำความรู้จักกับเบื้องหลังความสำเร็จและผู้ขับเคลื่อนนวัตกรรมของเรา</p>
-            </div>
-            
-            <div class="card-grid">
-                <div class="card">
-                    <span class="role">Software Engineer</span>
-                    <h3>สมชาย ใจดี</h3>
-                    <p>เชี่ยวชาญด้านการพัฒนาระบบ Backend และ Cloud Infrastructure เพื่อรองรับผู้ใช้งานจำนวนมาก</p>
-                </div>
-                <div class="card">
-                    <span class="role">UX/UI Designer</span>
-                    <h3>มาลี รักสวย</h3>
-                    <p>ออกแบบประสบการณ์ผู้ใช้งานที่ไร้รอยต่อ เน้นความสวยงามและใช้งานง่ายเป็นหัวใจสำคัญ</p>
-                </div>
-                <div class="card">
-                    <span class="role">Project Manager</span>
-                    <h3>วิชัย มุ่งมั่น</h3>
-                    <p>ผู้ควบคุมทิศทางของโปรเจกต์ให้ส่งมอบตรงเวลาและมีคุณภาพสูงสุดตามมาตรฐานสากล</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>เกี่ยวกับสถานศึกษา</h2>
+      <p>เรามุ่งมั่นพัฒนาการจัดการศึกษาด้านวิชาชีพให้มีคุณภาพ ด้วยเครื่องมือที่ทันสมัยและสภาพแวดล้อมที่เอื้อต่อการเรียนรู้</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>หลักสูตรคุณภาพ</h3>
+        <p>มีทั้งระดับ ปวช. และ ปวส. ในหลากหลายสาขาวิชา ทั้งช่างอุตสาหกรรม พาณิชยกรรม และเทคโนโลยีสารสนเทศ</p>
+      </div>
+      <div class="card">
+        <h3>อาจารย์ผู้เชี่ยวชาญ</h3>
+        <p>ทีมคณาจารย์ที่มีประสบการณ์ตรง คอยดูแลเอาใจใส่นักศึกษาอย่างใกล้ชิด ทั้งภาคทฤษฎีและภาคปฏิบัติ</p>
+      </div>
+      <div class="card">
+        <h3>เครือข่ายความร่วมมือ</h3>
+        <p>ร่วมมือกับสถานประกอบการชั้นนำมากมาย เปิดโอกาสให้นักศึกษาได้ฝึกประสบการณ์วิชาชีพในสถานที่จริง</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- CTA Band -->
-    <section class="cta-band">
-        <div class="wrap">
-            <h2>พร้อมที่จะเริ่มต้นกับเราแล้วหรือยัง?</h2>
-            <p>ปรึกษาผู้เชี่ยวชาญของเราฟรี เพื่อค้นหาแนวทางที่ดีที่สุดสำหรับธุรกิจของคุณ</p>
-            <a href="#" class="btn">ติดต่อเราเลยวันนี้</a>
-        </div>
-    </section>
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>ข่าวสารและกิจกรรม</h2>
+      <p>อัปเดตความเคลื่อนไหวและกิจกรรมต่างๆ ของวิทยาลัยเทคโนโลยีโปลิเทคนิคลานนา</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="role">รับสมัครนักศึกษา</span>
+        <h3>เปิดรับสมัครนักศึกษาใหม่ โควตาพิเศษ</h3>
+        <p>รับสมัครนักเรียนจบ ม.3 และ ม.6 เพื่อศึกษาต่อในระดับ ปวช. และ ปวส. พร้อมรับทุนการศึกษาพิเศษ</p>
+      </div>
+      <div class="card">
+        <span class="role">ผลงานนักศึกษา</span>
+        <h3>นักศึกษาคว้ารางวัลชนะเลิศทักษะวิชาชีพ</h3>
+        <p>ขอแสดงความยินดีกับตัวแทนนักศึกษาที่ได้รับรางวัลจากการแข่งขันทักษะวิชาชีพระดับชาติ</p>
+      </div>
+      <div class="card">
+        <span class="role">ประกาศ</span>
+        <h3>กำหนดการเปิดภาคเรียน</h3>
+        <p>นักศึกษาสามารถตรวจสอบตารางเรียนและกำหนดการต่างๆ ได้ผ่านระบบสารสนเทศของวิทยาลัย</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="wrap">
-            <div class="footer-grid">
-                <div>
-                    <h4>NextGen Tech</h4>
-                    <p>บริษัทพัฒนาซอฟต์แวร์และโซลูชันดิจิทัลชั้นนำ มุ่งมั่นสร้างสรรค์นวัตกรรมเพื่ออนาคต</p>
-                </div>
-                <div>
-                    <h4>ลิงก์ด่วน</h4>
-                    <ul>
-                        <li><a href="#">เกี่ยวกับเรา</a></li>
-                        <li><a href="#">ผลงานที่ผ่านมา</a></li>
-                        <li><a href="#">ร่วมงานกับเรา</a></li>
-                        <li><a href="#">บล็อกและข่าวสาร</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>ข้อมูลการติดต่อ</h4>
-                    <p>123 ถนนสุขุมวิท แขวงคลองเตย<br>เขตคลองเตย กรุงเทพฯ 10110</p>
-                    <p>อีเมล: hello@nextgentech.com<br>โทร: 02-XXX-XXXX</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 NextGen Tech. สงวนลิขสิทธิ์ทุกประการ.
-            </div>
-        </div>
-    </footer>
+<section class="cta-band">
+  <div class="wrap">
+    <h2>สนใจสมัครเรียนกับเรา?</h2>
+    <p>ดูรายละเอียดสาขาวิชาที่เปิดสอนและสมัครเรียนออนไลน์ได้ทันที</p>
+    <a class="btn" href="programs.html">ดูสาขาวิชาที่เปิดสอน</a>
+  </div>
+</section>
 
-    <!-- Script สำหรับเปิด/ปิดเมนูมือถือ -->
-    <script>
-        const navToggle = document.getElementById('navToggle');
-        const mainNav = document.getElementById('mainNav');
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>วิทยาลัยเทคโนโลยีโปลิเทคนิคลานนา เชียงใหม่</h4>
+        <p>2 ซอยสุขเกษม ถ.ซุปเปอร์ไฮเวย์ เชียงใหม่-ลำปาง ต.ป่าตัน อ.เมือง จ.เชียงใหม่ 50300</p>
+      </div>
+      <div>
+        <h4>ติดต่อเรา</h4>
+        <p>โทรศัพท์: 053-213061, 053-213144<br>อีเมล: lannapoly@lannapoly.ac.th</p>
+      </div>
+      <div>
+        <h4>เมนูหลัก</h4>
+        <p>
+          <a href="administrators.html">ข้อมูลผู้บริหาร</a><br>
+          <a href="staff.html">ข้อมูลบุคลากร</a><br>
+          <a href="students.html">ข้อมูลนักเรียน นักศึกษา</a><br>
+          <a href="programs.html">ข้อมูลสาขาวิชาที่เปิดสอน</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 วิทยาลัยเทคโนโลยีโปลิเทคนิคลานนา เชียงใหม่. สงวนลิขสิทธิ์.</div>
+  </div>
+</footer>
 
-        navToggle.addEventListener('click', () => {
-            // สลับการแสดงผลเมนูบนมือถือ
-            if (mainNav.style.display === 'block') {
-                mainNav.style.display = 'none';
-            } else {
-                mainNav.style.display = 'block';
-            }
-        });
+<script>
+  // Script สำหรับเปิด/ปิดเมนูบนมือถือ
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
 
-        // รีเซ็ตสไตล์เมื่อขยายหน้าจอใหญ่กว่า 768px เพื่อไม่ให้เมนูบั๊ก
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                mainNav.style.display = 'block';
-            } else {
-                mainNav.style.display = 'none';
-            }
-        });
-    </script>
+  navToggle.addEventListener('click', () => {
+    if (mainNav.style.display === 'block') {
+      mainNav.style.display = 'none';
+    } else {
+      mainNav.style.display = 'block';
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      mainNav.style.display = 'block';
+    } else {
+      mainNav.style.display = 'none';
+    }
+  });
+</script>
 </body>
 </html>
