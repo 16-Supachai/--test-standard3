@@ -6,106 +6,171 @@
 <title>คณะกรรมการบริหาร | วิทยาลัยเทคโนโลยีโปลิเทคนิคลานนา เชียงใหม่</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Sarabun', sans-serif;
     line-height: 1.6;
     color: #334155;
-    background-color: #e5e7eb;
+    background-color: #f8fafc;
   }
   a { text-decoration: none; color: inherit; }
   ul { list-style: none; }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
   
+  /* Header Design (มาตรฐานเดียวกับหน้าอื่นๆ) */
   .site-header {
-    background: #ffffff; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-    position: sticky; top: 0; z-index: 1000; padding: 15px 0;
+    background: #ffffff; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    position: sticky; top: 0; z-index: 1000; padding: 12px 0;
   }
   .site-header .wrap { display: flex; justify-content: space-between; align-items: center; }
   .brand { display: flex; align-items: center; gap: 15px; }
-  .brand-mark { background: #b91c1c; color: #ffffff; padding: 10px 15px; border-radius: 8px; font-weight: 700; font-size: 1.5rem; }
-  .brand-text strong { display: block; font-size: 1.2rem; color: #0f172a; line-height: 1.2; }
+  .brand-mark { 
+    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%); 
+    color: #ffffff; padding: 10px 16px; border-radius: 12px; font-weight: 700; font-size: 1.5rem; 
+    box-shadow: 0 4px 10px rgba(185, 28, 28, 0.3);
+  }
+  .brand-text strong { display: block; font-size: 1.15rem; color: #0f172a; line-height: 1.2; font-weight: 700; }
   .brand-text span { font-size: 0.85rem; color: #64748b; }
-  .nav-toggle { display: none; background: #b91c1c; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
-  .main-nav ul { display: flex; gap: 20px; }
-  .main-nav a { font-weight: 500; color: #475569; transition: color 0.3s ease; font-size: 1rem; }
-  .main-nav a:hover, .main-nav a[aria-current="page"] { color: #b91c1c; }
+  .nav-toggle { display: none; background: #b91c1c; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; }
+  .main-nav ul { display: flex; gap: 20px; align-items: center; }
+  .main-nav a { font-weight: 500; color: #475569; transition: all 0.3s ease; font-size: 0.95rem; padding: 8px 12px; border-radius: 6px; }
+  .main-nav a:hover, .main-nav a[aria-current="page"] { color: #b91c1c; background-color: #fef2f2; font-weight: 600; }
 
-  .breadcrumb { padding: 20px 0; font-size: 0.9rem; color: #64748b; }
-  .breadcrumb a { color: #0ea5e9; font-weight: 500; }
+  /* Breadcrumb */
+  .breadcrumb-wrap { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 15px 0; }
+  .breadcrumb { font-size: 0.9rem; color: #64748b; display: flex; align-items: center; gap: 8px; }
+  .breadcrumb a { color: #b91c1c; font-weight: 500; transition: color 0.2s; }
+  .breadcrumb a:hover { text-decoration: underline; }
 
-  .admin-section { padding: 20px 0 60px; }
-  .admin-heading {
+  /* Admin Section */
+  .admin-section { padding: 50px 0 80px; }
+  
+  .section-title-box {
     text-align: center;
-    color: #0ea5e9;
-    font-size: 1.8rem;
+    margin-bottom: 45px;
+  }
+  .admin-heading {
+    display: inline-block;
+    color: #0f172a;
+    font-size: 1.75rem;
     font-weight: 700;
-    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 12px;
+  }
+  .admin-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: #b91c1c;
+    border-radius: 2px;
   }
 
+  /* Grid Layout */
   .admin-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
   }
   .admin-grid.center-single {
-    grid-template-columns: minmax(300px, 380px);
+    grid-template-columns: minmax(320px, 380px);
     justify-content: center;
   }
 
+  /* Admin Card Design */
   .admin-card {
-    background: #f1f5f9;
-    border-radius: 8px;
+    background: #ffffff;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid #d1d5db;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    transition: all 0.35s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .admin-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px -10px rgba(185, 28, 28, 0.12);
+    border-color: #cbd5e1;
   }
   
   .admin-banner {
-    height: 140px;
-    background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80');
+    height: 130px;
+    background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80');
     background-size: cover;
     background-position: center;
   }
 
   .admin-content {
     position: relative;
-    padding: 20px;
-    min-height: 120px;
-    background: #eaeaea;
+    padding: 24px 20px;
+    flex-grow: 1;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
   }
 
-  .admin-info { width: 55%; }
-  .admin-info h3 { font-size: 1rem; color: #334155; margin-bottom: 5px; }
-  .admin-info p { font-size: 0.8rem; color: #475569; display: flex; align-items: center; gap: 6px; }
+  .admin-info { width: 58%; padding-right: 5px; }
+  .admin-info h3 { 
+    font-size: 1.05rem; 
+    color: #0f172a; 
+    margin-bottom: 8px; 
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .admin-info p { 
+    font-size: 0.85rem; 
+    color: #64748b; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    background: #f1f5f9;
+    padding: 6px 10px;
+    border-radius: 6px;
+    width: fit-content;
+    font-weight: 500;
+  }
+  .admin-info p i { color: #b91c1c; }
 
   .admin-photo {
     position: absolute;
-    right: 15px;
-    bottom: 15px;
-    width: 100px;
-    height: 125px;
+    right: 20px;
+    bottom: 20px;
+    width: 105px;
+    height: 135px;
     object-fit: cover;
-    border: 3px solid rgba(255, 255, 255, 0.8);
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    background-color: #cbd5e1;
+    border: 4px solid #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background-color: #e2e8f0;
+    transition: transform 0.3s ease;
+  }
+  .admin-card:hover .admin-photo {
+    transform: scale(1.03);
   }
 
-  .site-footer { background: #0f172a; color: #94a3b8; padding: 70px 0 30px; }
-  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; }
-  .footer-grid h4 { color: #ffffff; margin-bottom: 25px; font-size: 1.2rem; }
-  .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid #1e293b; font-size: 0.9rem; }
+  /* Footer Design */
+  .site-footer { background: #0f172a; color: #94a3b8; padding: 60px 0 30px; }
+  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+  .footer-grid h4 { color: #ffffff; margin-bottom: 20px; font-size: 1.15rem; font-weight: 600; }
+  .footer-grid p { font-size: 0.95rem; line-height: 1.7; }
+  .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid #1e293b; font-size: 0.85rem; color: #64748b; }
 
+  /* Responsive Media Queries */
   @media (max-width: 992px) { .admin-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 768px) {
     .admin-grid { grid-template-columns: 1fr; }
     .nav-toggle { display: block; }
-    .main-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #ffffff; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 20px; }
-    .main-nav ul { flex-direction: column; gap: 15px; }
+    .main-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #ffffff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); padding: 20px; border-top: 1px solid #e2e8f0; }
+    .main-nav ul { flex-direction: column; gap: 15px; align-items: flex-start; }
+    .main-nav a { width: 100%; }
   }
   @media (max-width: 480px) { .brand-text { display: none; } }
 </style>
@@ -118,7 +183,7 @@
       <span class="brand-mark">LPC</span>
       <span class="brand-text"><strong>วิทยาลัยเทคโนโลยีโปลิเทคนิคลานนา</strong><span>เชียงใหม่</span></span>
     </a>
-    <button class="nav-toggle" id="navToggle">☰ เมนู</button>
+    <button class="nav-toggle" id="navToggle"><i class="fa-solid fa-bars"></i> เมนู</button>
     <nav class="main-nav" id="mainNav">
       <ul>
         <li><a href="index.html">หน้าหลัก</a></li>
@@ -131,9 +196,13 @@
   </div>
 </header>
 
-<div class="wrap">
-  <div class="breadcrumb">
-    <a href="index.html">หน้าหลัก</a> &gt; คณะกรรมการบริหาร
+<div class="breadcrumb-wrap">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html"><i class="fa-solid fa-house"></i> หน้าหลัก</a> 
+      <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem; color: #cbd5e1;"></i> 
+      <span style="color: #334155; font-weight: 500;">คณะกรรมการบริหาร</span>
+    </div>
   </div>
 </div>
 
@@ -141,7 +210,9 @@
   <div class="wrap">
     
     <!-- หมวดผู้ทรงคุณวุฒิ -->
-    <h2 class="admin-heading">ผู้ทรงคุณวุฒิ</h2>
+    <div class="section-title-box">
+      <h2 class="admin-heading">ผู้ทรงคุณวุฒิ</h2>
+    </div>
     <div class="admin-grid">
       <div class="admin-card">
         <div class="admin-banner"></div>
@@ -176,14 +247,16 @@
     </div>
 
     <!-- หมวดผู้รับใบอนุญาต / ผู้จัดการ -->
-    <h2 class="admin-heading">ผู้รับใบอนุญาต / ผู้จัดการ</h2>
+    <div class="section-title-box">
+      <h2 class="admin-heading">ผู้รับใบอนุญาต / ผู้จัดการ</h2>
+    </div>
     <div class="admin-grid center-single">
       <div class="admin-card">
         <div class="admin-banner"></div>
         <div class="admin-content">
           <div class="admin-info">
             <h3>นายสมสิทธิ์ ทิพยมณฑล</h3>
-            <p><i class="fa-solid fa-user-tie"></i> ผู้รับใบอนุญาต / ผู้จัดการ</p>
+            <p><i class="fa-solid fa-user-tie"></i> ผู้จัดการ</p>
           </div>
           <img src="jpg/4.jpg" alt="นายสมสิทธิ์ ทิพยมณฑล" class="admin-photo">
         </div>
@@ -191,7 +264,9 @@
     </div>
 
     <!-- หมวดผู้อำนวยการ / ผู้แทนครู -->
-    <h2 class="admin-heading">ผู้อำนวยการ / ผู้แทนครู</h2>
+    <div class="section-title-box">
+      <h2 class="admin-heading">ผู้อำนวยการ / ผู้แทนครู</h2>
+    </div>
     <div class="admin-grid">
       <div class="admin-card">
         <div class="admin-banner"></div>
